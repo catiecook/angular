@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+  <head>
+    <meta charset="utf-8">
+    <title>Example (goes with notes)</title>
+  </head>
+  <body>
+    <!-- VIEW  -->
+    <div ng-controller="HelloController">
+      <h2>Hello, {{hello.title}}!</h2>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <!-- CONTROLLER -->
+    <script>
+    angular.module("myapp", [])
+      .controller("HelloController", function($scope) {
+        $scope.hello = {}; //model
+        $scope.hello.title = "World";
+      });
+    </script>
+  </body>
+</html>
+
+<!--
+$scope.hello is a MODEL
+
+This is the VIEW
+<div ng-controller="HelloController">
+  <h2>Hello, {{hello.title}}!</h2>
+</div>
+
+This is the Controller<script>
+
+angular.module("myapp", [])
+  .controller("HelloController", function($scope) {
+    $scope.hello = {};
+    $scope.hello.title = "World";
+  });
+</script>
+
+-->
