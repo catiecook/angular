@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel='stylesheet' href='style.css'>
+  </head>
+  <body ng-init="symbols=['Spades', 'Clubs', 'Hearts', 'Diamonds']">
+    <h4> Iterate pieces in array </h4>
+    <ul>
+      <li ng-repeat='symbol in symbols'>
+        {{symbol}}
+      </li>
+    </ul>
+    <hr>
+
+<!-- solve the issue with duplicate numbers and ng-repeat -->
+<h4> Iterate all values in array, even repeating ones </h4>
+    <div ng-init="numbers=[1,1,2,5,6,9,9,9]">
+      <ul>
+        <li ng-repeat='number in numbers track by $index'>
+          {{number}}
+        </li>
+      </ul>
+    </div>
+    <hr>
+
+    <h4>Itterate thru keys and values</h4>
+    <section ng-init="obj={'name': 'Roy',
+                            'age': 27,
+                            'height': 'tall'}">
+    <ul ng-repeat='(key, value) in obj'>
+      <li>{{key | uppercase }}: {{value}}</li>
+    </ul>
+    </div>
+    </section>
+    <hr>
+
+    <h4>ng-show / ng-hide</h4>
+    <div ng-show='3 + 4 == 5'>
+      3 + 4 isn't 5, don't show
+    </div>
+
+    <div ng-show='3 + 4 == 7'>
+      3 + 4 is 7, do show
+    </div>
+
+    <div ng-hide='3 + 4 == 5'>
+        3 + 4 isn't 5, don't hide
+    </div>
+
+    <div ng-hide='3 + 4 == 7'>
+      3 + 4 is 7, do hide
+    </div>
+    <small>*there are conditional examples in the code</small>
+    <hr>
+
+    <h4>Password Validator</h4>
+    <h5>Sign up page</h5>
+    <input type='password' ng-init="" ng-model="password">
+    <p>Your passowrd is {{password.length}} characters</p>
+
+    <button type='submit' ng-show='password.length >= 6'>Sign Up!</button>
+    <p ng-show='password.length < 6'>You need to enter at least 6 characters!</p>
+    <hr>
+
+    <h4>ng-class</h4>
+    <div ng-class='{highlight: 4 + 4 == 8}'> 4 + 4 = 8 </div>
+    <div ng-class='{highlight: 4 + 4 == 10}'> 4 + 4 = 10 </div>
+    <small>the highlight will only appear on the true expression</small>
+    <hr>
+    <h4>Sign up with colors</h4>
+    <input type='password' ng-init="" ng-model="password2">
+    <p class='red' ng-class='{passGood: password2.length >= 6}'>Your passowrd is {{password2.length}} characters</p>
+
+    <button type='submit' ng-show='password2.length >= 6'>Sign Up!</button>
+    <p ng-show='password2.length < 6'>You need to enter at least 6 characters!</p>
+
+    <hr>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+
+  <script src="main.js" type="text/javascript"></script>
+  </body>
+</html>

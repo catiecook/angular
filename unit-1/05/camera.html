@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel='stylesheet' href='style.css'>
+  </head>
+  <body>
+
+    <h1>Camera Shop</h1>
+    <div ng-init="cameras=[
+  {
+    title: 'Nikon D3100 DSLR',
+    image: 'http://ecx.images-amazon.com/images/I/713u2gDQqML._SX522_.jpg',
+    rating: 3.4,
+    price: 369.99,
+    onSale: true
+  },
+  {
+    title: 'Canon EOS 70D',
+    image: 'http://ecx.images-amazon.com/images/I/81U00AkAUWL._SX522_.jpg',
+    rating: 2.0,
+    price: 1099.0,
+    onSale: false
+  },
+  {
+    title: 'Nikon D810A',
+    image:'http://ecx.images-amazon.com/images/I/91wtXIfLl2L._SX522_.jpg',
+    rating: 4.2,
+    price: 3796.95,
+    onSale: true
+  }
+]">
+    <select ng-model='sort'>
+      <option value='rating'> Rating </option>
+      <option value='price'> Price </option>
+
+    </select>
+    <table ng-repeat="(key, value) in cameras | orderBy:sort">
+      <tr>
+        <td class='item'> {{value.title}} </td>
+      </tr>
+      <tr>
+        <td><img ng-src="{{value.image}}" /></td>
+      </tr>
+      <tr>
+        <td ng-show='{{value.onSale == false}}'>Price: {{value.price | currency}} </td>
+      </tr>
+      <tr>
+        <td ng-show='{{value.onSale == true}}' class='sale'> Price: {{value.price | currency}} ON SALE!! </td>
+      </tr>
+      <tr>
+        <td class='rating'> <small>*this item has been rated at: {{value.rating}} </small></td>
+      </tr>
+
+    </table>
+    </div>
+
+
+    <!-- <h4>Sign up with colors</h4>
+    <input type='password' ng-init="" ng-model="password2">
+    <p class='red' ng-class='{passGood: password2.length >= 6}'>Your passowrd is {{password2.length}} characters</p>
+
+    <button type='submit' ng-show='password2.length >= 6'>Sign Up!</button>
+    <p ng-show='password2.length < 6'>You need to enter at least 6 characters!</p>
+
+    <hr> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+
+  <script src="main.js" type="text/javascript"></script>
+  </body>
+</html>

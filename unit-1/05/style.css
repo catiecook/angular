@@ -1,0 +1,37 @@
+.highlight {
+  background-color: yellow;
+}
+
+.red {
+  color: red;
+}
+
+.passGood {
+  color: green;
+}
+
+img {
+  width: 150px;
+}
+
+table {
+  padding: 40px;
+}
+
+.sale {
+  color: orange;
+}
+
+.item {
+  font-weight: bold;
+}
+
+.rating {
+  color: lightblue;
+}
+
+
+select {
+  margin-left: 40px;
+  margin-top: 20px;
+}
