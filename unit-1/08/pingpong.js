@@ -23,6 +23,7 @@ app.controller("game", ($scope) => {
     }
     if($scope.view.score1 === 11) {
       $scope.view.player1Wins = true
+      $scope.view.player2Wins = false
       $scope.view.winner = "Player 1 wins!"
       $scope.view.games = true
       $scope.view.p1GamesWon += 1
@@ -35,6 +36,7 @@ app.controller("game", ($scope) => {
     $scope.view.score2 += 1
     if($scope.view.score2 === 11) {
       $scope.view.player2Wins = true
+      $scope.view.player1Wins = false
       $scope.view.winner = "Player 2 wins!"
       $scope.view.games = true
       $scope.view.p2GamesWon += 1
