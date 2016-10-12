@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app='pingpong'>
+  <head>
+    <meta charset="utf-8">
+    <title>NG-CLICK</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=ABeeZee|Kaushan+Script" rel="stylesheet">
+  </head>
+  <body ng-controller='game'>
+
+    <h1 class="centered">Ping Pong </h1>
+    <br>
+    <div class="container">
+      <div class="scores" ng-show="view.games">
+        <span>Wins: {{view.p1GamesWon}}</span>
+      </div>
+      <button class="table" ng-click="p1Scores()" ng-class="{winner: view.player1Wins, loser: view.player2Wins}">
+        <h3 class="centered">Player 1</h3>
+        <h1> {{view.score1}} </h1>
+        <small ng-show="view.serve1">(Serving)</small>
+      </button>
+
+      <button class="table" ng-click="p2Scores()" ng-class="{winner: view.score2 >= 11}"  ng-class="{winner: view.player2Wins, loser: view.player1Wins}">
+        <h3 class="centered">Player 2</h3>
+        <h1> {{view.score2}} </h1>
+        <small ng-show="view.serve2">(Serving)</small>
+      </button>
+      <div class="scores" ng-show="view.games">
+        <span>Wins: {{view.p2GamesWon}}</span>
+      </div>
+    </div>
+    <h3> {{view.winner}} </h3>
+    <br>
+    <button class="reset" ng-click="reset()"> Reset </button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="pingpong.js" type="text/javascript"></script>
+  </body>
+</html>
