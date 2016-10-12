@@ -15,8 +15,9 @@ body {
 }
 
 .centered{
-  font-family: 'Kaushan Script', cursive;
+  font-family: 'Kaushan Script';
 }
+
 .table {
   width: 20%;
   background-color: lightblue;

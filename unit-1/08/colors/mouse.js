@@ -25,10 +25,6 @@ app.controller("mouse", ($scope) => {
       }
     };
     $timeout(reverseColors(), 1000);
-    // if(!$scope.replay) {
-    //   $scope.replay = true
-    //   $timeout(() => { reverseColors() }, 500)
-    // }
   }
 
 });

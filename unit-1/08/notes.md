@@ -19,3 +19,13 @@ This will update the number by the click on a button containing the ng-click fun
 ##timeout
 - returns a promise, which is resolved when the delay has passed and the timeout function is executed
 _to cancel_ : `$timeout.cancel(promise)`
+
+##ng-submit
+-_anti patterns: (bad practices)_
+  • Do not use `ng-submit` on the form and `ng-click` on the submit button at the same time. Use either `ng-submit` on the form and no directive on the submit button, or use `ng-click` on the submit button and no directive on the form. `ng-submit` is preferred in a form.
+  • Don't create separate properties on the $scope object for each form field. _create an object that will contain all of the form properties inside of it_
+  i.e. `$scope.favoriteForm = {};`
+  • never do DOM manipulation on your controller.
+  • never do DOM manipulation on your controller.
+  • never do DOM manipulation on your controller.
+  _Instead, add the data that you want to display to an object in the scope that will then be displayed in the view._
