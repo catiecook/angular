@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="madLib">
+  <head>
+    <meta charset="utf-8">
+    <title>Mad Lib Controller</title>
+    <link rel='stylesheet' href='style.css'>
+  </head>
+  <body ng-controller="madLibController">
+<div>
+  <h2> Mad Lib </h2>
+  <label for='boyName'>Boy's name </label><br>
+  <input type='text' name='boyName' ng-model='boyName'><br>
+
+  <label for='adjective'>Adjective</label><br>
+    <input type='text' name='adjective' ng-model='adjective' ng-init='_______'><br>
+
+  <label for='pluralNoun'>Plural Noun</label><br>
+    <input type='text' name='pluralNoun' ng-model='pluralNoun' ng-init='_______'><br>
+
+  <label for='pluralNoun'>Plural Noun</label><br>
+    <input type='text' name='pluralNoun2' ng-model='pluralNoun2' ng-init='_______'><br>
+
+  <label for='insect'>An insect, plural</label><br>
+    <input type='text' name='insect' ng-model='insect' ng-init='_______'><br>
+
+  <label for='pluralNoun'>Plural Noun</label><br>
+    <input type='text' name='pluralNoun3' ng-model='pluralNoun3'  ng-init='_______'><br>
+
+  <label for='verb'>A verb ending in 's'</label><br>
+    <input type='text' name='verb' ng-model='verb'  ng-init='_______'><br>
+
+    <button class='generate' ng-click="generate()"> Generate! </button>
+
+  <div ng-show='fullThing'><h3> Mad with the Libs </h3>
+   <p>I'm in love with {{boyName | uppercase}}. He's so {{adjective | uppercase}}! He has big flat {{pluralNoun | uppercase}}, and when our {{pluralNoun2}} meet, I get {{insect | uppercase}} in my stomach. I've fallen for him like a ton of {{pluralNoun3 | uppercase}} and he {{verb | uppercase}} me, too. But I think he's got another girlfriend. What should I do? </p>
+   <button class='generate' ng-click="clear()"> Again! </button>
+ </div>
+
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="main.js" type="text/javascript"></script>
+  </body>
+</html>

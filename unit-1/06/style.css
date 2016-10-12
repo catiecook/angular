@@ -1,0 +1,17 @@
+body {
+  margin: 2% 5%;
+}
+.generate {
+  margin-top: 2%;
+  padding: 1%;
+  background-color: indianred;
+  font-weight: bold;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  margin-bottom: 1%;
+}

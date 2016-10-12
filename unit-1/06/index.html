@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div ng-controller="ExerciseController">
+      <h1>My favorite color is: {{favColor}}</h1>
+      <input ng-model="favColor" type="text" placeholder="What is your name">
+      <hr>
+      <!-- <button class='btn' type='button' ng-click="onClickCalculate()">seconds in a century</button> -->
+      <h3>There are {{secondsInACentury | number}} seconds in a century!</h3>
+      <hr>
+
+      <h2>Today's Date: {{rightNow | date:'EEEE, MMMM dd, yyyy'}}</h2>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="app.js" type="text/javascript"></script>
+
+  </body>
+</html>
