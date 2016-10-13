@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="ngContact">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=ABeeZee|Kaushan+Script" rel="stylesheet">
+
+  </head>
+  <body ng-controller="contact">
+    <h1 class="fancy">Hello, Who's This?</h1>
+    <div class="container">
+
+    <form name="contactList">
+      <label for="name">Name:</label>
+      <input name="name" type="text" ng-model="contactsForm.name" placeholder="name"> <br>
+      <label for="email">Email:</label>
+      <input name="email" type="text" ng-model="contactsForm.email" placeholder="email"> <br>
+      <label for="phone">Phone:</label>
+      <input name="phone" type="text" ng-model="contactsForm.phone" placeholder="phone"><br>
+      <button ng-click="addContact()" class="reset"> Add Contact </button>
+    </form>
+    <label> Search </label>
+      <input class="search" ng-model="searchText">
+
+      <table class="outputs" ng-show="contactsExist">
+        <thead>
+          <tr>
+            <th> Name: </th>
+            <th> Email: </th>
+            <th> Phone: </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="contact in view.allContacts | filter: searchText">
+            <td>{{contact.name}}</td>
+            <td>{{contact.email}}</td>
+            <td>{{contact.phone}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+        <br>
+    </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+      <script src="app.js" type="text/javascript"></script>
+  </body>
+</html>
