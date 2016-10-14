@@ -48,6 +48,15 @@ input {
 td {
   margin-left: 5%;
 }
+
 table {
   width: 80%;
+}
+
+.bad {
+  box-shadow: inset 1px -2.5px 1px -1px indianred;
+}
+
+.good {
+  box-shadow: inset 1px -2.5px 1px -1px lightgreen;
 }

@@ -1,32 +1,29 @@
-var app = angular.module("myForm", [])
+var app = angular.module("formPractice", [])
 
 app.controller("form", ($scope) => {
   $scope.view= {}
   $scope.view.allUsers = []
-  $scope.userInfo = {}
+  $scope.form = {}
 
   $scope.submitted = false
   $scope.userExists = false
 
   $scope.addUser = () => {
-    if($scope.signupForm.$valid) {
-  
-      console.log("valid as heck!");
-
+  console.log('made it in the function');
       var users = {
-        username: $scope.userInfo.username,
-        password: $scope.userInfo.password,
-        email: $scope.userInfo.email,
-        zip: $scope.userinfo.zip
+        username: $scope.form.username,
+        password: $scope.form.password,
+        email: $scope.form.email,
+        zip: $scope.form.zip
       }
-      $scope.userInfo.username = ""
-      $scope.userInfo.password = ""
-      $scope.userInfo.email = ""
-      $scope.userinfo.zip = ""
+
+      $scope.form.username = ""
+      $scope.form.password = ""
+      $scope.form.email = ""
+      $scope.form.zip = ""
 
       $scope.view.allUsers.push(users)
       $scope.userExists = true
-    }
 
   }
 

@@ -4,7 +4,7 @@ var app = angular.module("madLib", []);
     $scope.fullThing = false;
     console.log("right before function");
     $scope.generate = function() {
-          console.log("HI function");
+      console.log("HI function");
       $scope.fullThing = true;
     }
 

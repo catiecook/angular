@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myForm">
+<html ng-app="formPractice">
   <head>
     <meta charset="utf-8">
     <title>Contact Form</title>
@@ -17,74 +17,102 @@
     <div class="container">
       <h1 class="fancy">Form Practice</h1>
       <br>
-      <form action="#" name="signinForm" ng-submit="addUser()" novalidate>
-        <label for="username">Username: </label><br>
-        <input type="text"
-          id="username"
-          name="username"
-          ng-model="userInfo.username"
-          ng-minlength=3
-          ng-maxlength=12
-          ng-class="{'has-error' : signinForm.username.$invalid, 'has-success': signinForm.username.$valid}" required>
-        <br>
-        <div class="error" ng-show="singinForm.username.$dirty && signinForm.username.$invalid">
-          <small class="error" ng-show='signinForm.username.$error.$required'>
-            Password is required.
-          </small>
-          <small class="error" ng-show='signinForm.username.$error.$minlength'>
-            Password needs to be at least 3 characters.
-          </small>
-          <small class="error" ng-show='signinForm.username.$error.$maxlength'>
-            Password needs to be at least 12 characters.
-          </small>
-        </div>
-        <br>
+      <form name="myForm" novalidate>
 
-        <label for="password">Password: </label>
-        <br>
-        <input type="password"
-          id="password"
-          name="password"
-          ng-model="userInfo.password"
-          ng-minlength=3
-          ng-maxlength=12
-          ng-class="{'has-error' : signinForm.password.$invalid, 'has-success': signinForm.password.$valid}" required>
-        <br>
-        <div ng-show="singinForm.password.$dirty && signinForm.password.$invalid">
-          <small class="error" ng-show='signinForm.password.$error.$required'>
-            Password is required.
-          </small>
-          <small class="error" ng-show='signinForm.password.$error.$minlength'>
-            Password needs to be at least 3 characters.
-          </small>
-          <small class="error" ng-show='signinForm.password.$error.$maxlength'>
-            Password needs to be at least 12 characters.
-          </small>
-        </div>
-        <br>
+          <label for="username">Username: </label><br>
+          <input type="text"
+            id="username"
+            name="username"
+            ng-model="form.username"
+            minlength="3"
+            maxlength="12"
+            ng-class="{'bad': myForm.username.$invalid, 'good': myForm.username.$valid}"
+            required>
+          <br>
+          <div class="error" ng-show="myForm.username.$invalid">
+            <small class="error" ng-show='myForm.username.$error.required'>
+              Username is required.
+            </small>
+            <small class="error" ng-show='myForm.username.$error.minlength'>
+              Username needs to be at least 3 characters.
+            </small>
+          </div>
+          <br>
+          <label for="password">Password: </label>
+          <br>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            ng-model="form.password"
+            minlength=3
+            maxlength=12
+            ng-class="{'bad' : myForm.password.$invalid, 'good': myForm.password.$valid}"
+            required>
+          <br>
+          <div ng-show="myForm.password.$invalid">
+            <small class="error"
+            ng-show='myForm.password.$error.required'>
+              Password is required.
+            </small>
+            <small class="error" ng-show='myForm.password.$error.minlength'>
+              Password needs to be at least 3 characters.
+            </small>
+          </div>
+          <br>
 
-        <label for="email">Email: </label> <br>
-        <input type="email" id="email"
-          name="email"
-          ng-model="userInfo.email" required><br>
+          <label for="email">Email: </label> <br>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            ng-model="form.email"
+            ng-class="{'bad' : myForm.email.$invalid, 'good': myForm.email.$valid}"
+            required
+          >
+            <br>
+          <small class="error" ng-show='myForm.email.$invalid'>
+              Invalid Email.
+          </small>
+          <br>
 
-        <label for="zip">Zip (5 digits): </label>
-        <br>
-        <input type="number"
-          id="zip" name="zip"
-          ng-model="userInfo.zip"
-          ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/"
-          ng-class="{'has-error' : signinForm.zip.$invalid, 'has-success': signinForm.zip.$valid}" required>
-        <br>
+          <label for="zip">
+            Zip (5 digits):
+          </label>
+          <br>
+          <input
+            type="number"
+            id="zip"
+            name="zip"
+            ng-model="form.zip"
+            ng-pattern="/^\d{5}/"
+            ng-class="{'bad' : myForm.zip.$invalid, 'good': myForm.zip.$valid}"
+            required
+          >
+          <br>
 
-        <button type="submit" ng-disabled="signupForm.$invalid">Click me!</button>
+          <button type="submit" ng-click="addUser()" ng-disabled="myForm.$invalid">
+            Click me!
+          </button>
+
       </form>
 
-      <div class='output' ng-show="userExists">
-        <p> {{userInfo.username}}</p>
-        <p> {{userInfo.email}}</p>
-        <p> {{userInfo.zip}}</p>
-      </div>
+      <table class="outputs" ng-show="userExists">
+        <thead>
+          <tr>
+            <th> Name: </th>
+            <th> Email: </th>
+            <th> Zip: </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="contact in view.allUsers" ng-show="userExists">
+            <td>{{contact.username}}</td>
+            <td>{{contact.email}}</td>
+            <td>{{contact.zip}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
