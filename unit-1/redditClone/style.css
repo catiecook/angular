@@ -1,0 +1,98 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: .9em;
+  background-color: #ddd;
+}
+
+.container {
+  width: 100%;
+  margin-bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-family: 'Bungee Inline';
+}
+
+table {
+  width: 95%;
+  margin: 2% auto;
+  padding: 2%;
+  background-color: white;
+}
+
+tr {
+  height: 180px;
+}
+
+.title {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-right: 1%;
+}
+
+.titleRating {
+  width: 50%;
+}
+
+.addOns {
+  margin-right: 4%;
+}
+
+.author {
+  font-size: .8em;
+  font-style: italic;
+  font-weight: normal;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.floatedimg {
+  width: 25%;
+  margin-right: 5%;
+  position: relative;
+  float: left;
+  clear: none;
+}
+
+.floated {
+  width: 65%;
+  position: relative;
+  float: left;
+  clear: none;
+  overflow: scroll;
+}
+
+.rating {
+  color: darkgreen;
+}
+
+.spread {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.redditImg {
+  width: 100%;
+  min-width: 50px;
+}
+
+.description {
+  margin-top: 3%;
+}
+
+.comments {
+  width: 70%;
+  height: auto;
+}

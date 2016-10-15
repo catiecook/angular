@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html ng-app="redditClone">
+  <head>
+    <meta charset="utf-8">
+    <title>Reddit Clone</title>
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=ABeeZee|Kaushan+Script" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+
+    <!-- font awesome -->
+
+    <script src="https://use.fontawesome.com/7d1aa357f7.js"></script>
+
+    <!-- my stylesheet -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body ng-controller="reddit">
+    <h1>Reddit Clone</h1>
+    <div class="container">
+      <table ng-repeat="reddit in master.allData" ng-model="redditPosts">
+
+        <tr>
+          <td class='floatedimg'>
+              <img class="redditImg" ng-src="{{reddit.image}}" />
+          </td>
+          <td class='floated'>
+            <span class="spread">
+              <span class="titleRating">
+              <detail class="title">
+                {{reddit.title}}
+              </detail>
+
+              <i class="fa fa-arrow-up"
+                aria-hidden="true"
+                ng-click="rateUp()"
+                ng-model="votesUp"
+              >
+              </i>
+              <i class="fa fa-arrow-down"
+                aria-hidden="true"
+                ng-click="rateDown()"
+                ng-model="votesDown"
+              >
+              </i>
+              <small class="rating"
+                name="rating"
+                ng-model="rate"
+              >
+                {{reddit.rating}}
+              </small>
+              </span>
+              <span class="author">
+                Posted by: {{reddit.author}}
+              </span>
+            </span>
+            <br>
+            <hr>
+            <div class="description">
+              {{reddit.description}}
+            </div>
+            <br>
+            <hr>
+            <br>
+            <span class="spread">
+                <small class="addOns">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                  Posted: {{rightNow | date:'EEEE, MMMM dd, yyyy'}}
+                </small>
+                <small class="addOns">
+                <i class="fa fa-comment" ng-click="viewComments()" aria-hidden="true"></i>
+                Comments
+              </small class="addOns">
+                <small>
+                <i ng-click="newComment()" class="fa fa-pencil" aria-hidden="true" ></i>
+                Add Comment
+              </small>
+            </span>
+          </td>
+          </tr>
+          <tr class="comments">
+            <td>
+              <p ng-show="master.viewComments"> Comments </p>
+              <small class="author"
+                ng-show="noComments"
+                ng-model="none"
+              >
+                No comments yet!
+              </small>
+              <small class="comments"
+                ng-show="master.commentsExist"
+                ng-model="commentsExist"
+              >
+                <detail>
+                </detail>
+              </small>
+            </td>
+            <td>
+              <section ng-show="master.addComment">
+                <small>Add a Comment</small>
+                <input type="text" ng-model="commentToAdd" />
+                <button type="submit" ng-click="addComment()"> Submit </button>
+              </section>
+            </td>
+          </tr>
+      </table>
+    </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+      <script src="app.js" type="text/javascript"></script>
+  </body>
+</html>
