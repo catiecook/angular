@@ -1,4 +1,4 @@
-var app = angular.module("redditClone", [])
+var app = angular.module("redditClone", ['angularMoment'])
  console.log("in js file");
 app.controller("reddit", ($scope) => {
   $scope.master = {}
@@ -72,6 +72,7 @@ app.controller("reddit", ($scope) => {
     console.log($scope.master.newPost);
   }
   // date time posted
+
   $scope.time = new Date();
 
 
