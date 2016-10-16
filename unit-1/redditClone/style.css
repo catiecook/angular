@@ -31,6 +31,10 @@ tr {
   height: 180px;
 }
 
+textarea {
+  margin: 2%;
+}
+
 .title {
   font-size: 1.3em;
   font-weight: bold;
@@ -73,14 +77,33 @@ tr {
   overflow: scroll;
 }
 
-.rating {
+.posRating {
   color: darkgreen;
+}
+
+.negRating {
+  color: indianred;
+}
+
+.zeroRating {
+  color: black;
 }
 
 .spread {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.spreadNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.search {
+  padding: 1%;
 }
 
 .redditImg {
@@ -90,6 +113,12 @@ tr {
 
 .description {
   margin-top: 3%;
+}
+
+.addComment {
+  position: relative;
+  float: right;
+  width: 30%;
 }
 
 .comments {
