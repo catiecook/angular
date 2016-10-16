@@ -25,7 +25,7 @@
     </h1>
     <br>
     <span class="spreadNav">
-      <detail href="post.html">
+      <detail ng-model="new" ng-click="addPost()">
         <i class="fa fa-plus" aria-hidden="true"></i>Submit Post
       </detail>
       <input
@@ -43,8 +43,74 @@
 
       </detail>
     </span>
-    <div class="container">
 
+    <br>
+
+    <div class="newPost" ng-show="newPost">
+
+      <form ng-model="newPostForm">
+        <span>
+          <label for="newTitle">
+            Title:
+          </label>
+          <input type="text"
+            class="new"
+            name="newTitle"
+            ng-model="redditTitle"
+            placeholder="Title"
+            required
+            />
+        </span>
+        <span>
+          <label for="newBody">
+            Image:
+          </label>
+          <input type="url"
+            class="new"
+            name="newImage"
+            ng-model="redditImage"
+            required
+          />
+        </span>
+        <span>
+          <label for="newAuthor">
+            Author:
+          </label>
+          <input type="text"
+            class="new"
+            name="newAuthor"
+            ng-model="redditAuthor"
+            required
+          />
+        </span>
+        <br><br>
+        <span>
+          <label for="newBody">
+            Post:
+          </label>
+          <br>
+          <textarea type="text"
+            class="newPostBox"
+            name="newBody"
+            ng-model="redditBody"
+            placeholder="Full Post Here"
+            required
+          >
+          </textarea>
+        </span>
+        <br>
+
+        <button
+          type="submit"
+          class="right"
+          ng-click="submitNewPost()"
+        >
+            Submit!
+        </button>
+      </form>
+    </div>
+
+    <div class="container">
       <table ng-repeat="reddit in master.allData | orderBy:redditSort" ng-model="redditPost">
         <tr>
           <td class='floatedimg'>
