@@ -149,3 +149,13 @@ input.new {
   clear: both;
   margin-right: 10%;
 }
+
+.bad {
+  background-color: rgba(231, 177, 177, .2);
+
+}
+
+.good {
+  background-color: rgba(177, 231, 204, .2);
+
+}
