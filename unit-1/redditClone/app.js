@@ -6,6 +6,7 @@ app.controller("reddit", ($scope) => {
   $scope.master.addComment = false
   $scope.master.viewComments = false
   $scope.master.noComments = true
+  $scope.master.newPost = false
   $scope.master.allData = [
     {
       title: "First Post",
@@ -63,6 +64,12 @@ app.controller("reddit", ($scope) => {
     }
     $scope.master.allData.push(comment)
 
+  }
+
+  $scope.addPost = () =>{
+    $scope.master.newPost = true
+    console.log("in new post function");
+    console.log($scope.master.newPost);
   }
   // date time posted
   $scope.time = new Date();

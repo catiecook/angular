@@ -35,6 +35,11 @@ textarea {
   margin: 2%;
 }
 
+input.new {
+  margin-right: 3%;
+  padding: 1%;
+}
+
 .title {
   font-size: 1.3em;
   font-weight: bold;
@@ -124,4 +129,23 @@ textarea {
 .comments {
   width: 70%;
   height: auto;
+}
+
+.newPost {
+  width: 90%;
+  height: auto;
+  padding: 5%;
+}
+
+.newPostBox {
+  width: 85%;
+  height: auto;
+  padding: 2%;
+}
+
+.right {
+  position: relative;
+  float: right;
+  clear: both;
+  margin-right: 10%;
 }
