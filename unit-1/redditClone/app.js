@@ -65,7 +65,7 @@ app.controller("reddit", ($scope) => {
 
   }
   // date time posted
-  $scope.rightNow = new Date();
+  $scope.time = new Date();
 
 
 });
