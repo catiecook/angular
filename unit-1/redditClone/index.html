@@ -17,10 +17,31 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body ng-controller="reddit">
-    <h1>Reddit Clone</h1>
-    <div class="container">
-      <table ng-repeat="reddit in master.allData" ng-model="redditPosts">
+    <h1>
+      Reddit Clone
+    </h1>
+    <span class="spreadNav">
+      <detail href="post.html">
+        <i class="fa fa-plus" aria-hidden="true"></i>Submit Post
+      </detail>
+      <input
+        class="search"
+        name="search"
+        ng-model="redditSearch"
+        placeholder="Search"
+      >
+      <detail
+        name="sort"
+        ng-model="redditSort"
+        ng-click=""
+      >
+        Sort by votes <i class="fa fa-sort" aria-hidden="true"></i>
 
+      </detail>
+    </span>
+    <div class="container">
+
+      <table ng-repeat="reddit in master.allData | orderBy:redditSort" ng-model="redditPost">
         <tr>
           <td class='floatedimg'>
               <img class="redditImg" ng-src="{{reddit.image}}" />
@@ -44,7 +65,7 @@
                 ng-model="votesDown"
               >
               </i>
-              <small class="rating"
+              <small ng-class="{posRating: positive, zeroRating: zero, negRating: negitive}"
                 name="rating"
                 ng-model="rate"
               >
@@ -73,37 +94,48 @@
                 Comments
               </small class="addOns">
                 <small>
-                <i ng-click="newComment()" class="fa fa-pencil" aria-hidden="true" ></i>
+                <i ng-click="newComment()" class="fa fa-pencil" aria-hidden="true"></i>
                 Add Comment
               </small>
             </span>
           </td>
           </tr>
+
           <tr class="comments">
-            <td>
-              <p ng-show="master.viewComments"> Comments </p>
-              <small class="author"
-                ng-show="noComments"
-                ng-model="none"
-              >
+            <td class="spread">
+              <div ng-show="master.viewComments">
+              <p> Comments </p>
+                <!-- view comments: {{master.viewComments}}<br>
+                No Comments: {{master.noComments}}
+                Comments Exist: {{master.commentsExist}} -->
+                <small class="author"
+                  ng-show="master.noComments"
+                  ng-model="none"
+                >
                 No comments yet!
               </small>
+            </div>
               <small class="comments"
                 ng-show="master.commentsExist"
                 ng-model="commentsExist"
               >
-                <detail>
-                </detail>
+
+              {{reddit.comment}}
+
               </small>
             </td>
-            <td>
-              <section ng-show="master.addComment">
-                <small>Add a Comment</small>
-                <input type="text" ng-model="commentToAdd" />
-                <button type="submit" ng-click="addComment()"> Submit </button>
-              </section>
-            </td>
           </tr>
+            <tr class="comments">
+              <td>
+                <section class="addComment" ng-show="master.addComment">
+                  <detail>Add a Comment</detail><br>
+                  <textarea type="text" ng-model="commentToAdd"> </textarea>
+                  <br>
+                  <button type="submit" ng-click="addComment(commentToAdd)"> Submit </button>
+                  <p> Preview: {{commentToAdd}}</p>
+                </section>
+              </td>
+            </tr>
       </table>
     </div>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>

@@ -12,35 +12,37 @@ app.controller("reddit", ($scope) => {
       author: "Anna Frann",
       description: "Damn that dog brown cats with pink ears but sleep on keyboard, for thug cat but lie on your belly and purr when you are asleep. Fall over dead (not really but gets sypathy). Put butt in owner's face favor packaging over toy lick arm hair. Hide from vacuum cleaner lick plastic bags but scratch leg; meow for can opener to feed me, but rub face on everything, for make muffins, but vommit food and eat it again, sleep on dog bed, force dog to sleep on floor. Have secret plans. Stares at human while pushing stuff off a table find empty spot in cupboard and sleep all day and catch mouse and gave it as a present.",
       image: "https://source.unsplash.com/category/food/200x300",
-      rating: $scope.master.rate = 0,
-      // comments: $scope.master.allData.comments = []
+      rating: 0,
+
     },
     {
       title: "Another Post",
       author: "Mitch Folks",
       description: "Stares at human while pushing stuff off a table find empty spot in cupboard and sleep all day and catch mouse and gave it as a present. If it smells like fish eat as much as you wish sit on human, run in circles chirp at birds yet brown cats with pink ears, intently stare at the same spot. Rub face on owner swat at dog. Sit in box i cry and cry and cry unless you pet me, and then maybe i cry just for fun yet toy mouse squeak roll over but i like big cats and i can not lie. Chase the pig around the house chase mice, so meow to be let out. Sit in box scream at teh bath and scamper. Meowwww.",
       image: "https://source.unsplash.com/category/nature/200x300",
-      rating: $scope.master.rate = 0,
-      // comments: $scope.master.allData.comments = []
+      rating: 0,
+
     },
     {
-      title: "Bikes and Stuff",
+      title: "Also This",
       author: "Liz Horton",
-      description: "Damn that dog brown cats with pink ears but sleep on keyboard, for thug cat but lie on your belly and purr when you are asleep. Fall over dead (not really but gets sypathy). Put butt in owner's face favor packaging over toy lick arm hair. Hide from vacuum cleaner lick plastic bags but scratch leg; meow for can opener to feed me, but rub face on everything, for make muffins, but vommit food and eat it again, sleep on dog bed, force dog to sleep on floor.",
+      description: "Damn thallDataat dog brown cats with pink ears but sleep on keyboard, for thug cat but lie on your belly and purr when you are asleep. Fall over dead (not really but gets sypathy). Put butt in owner's face favor packaging over toy lick arm hair. Hide from vacuum cleaner lick plastic bags but scratch leg; meow for can opener to feed me, but rub face on everything, for make muffins, but vommit food and eat it again, sleep on dog bed, force dog to sleep on floor.",
       image: "https://source.unsplash.com/category/objects/200x300",
-      rating: $scope.master.rate = 0,
-      // comments: $scope.master.allData.comments = []
+      rating: 0,
+
     }
   ]
+//not working yet
 
   $scope.rateUp = () => {
-    console.log("rate up");
-    $scope.master.rate += 1
+    // console.log($scope.$watch)
+    console.log($scope.allData.rating);
+    $scope.allData.rating+=1
   }
-
+//not working yet
   $scope.rateDown = () => {
-        console.log("rate down");
-    $scope.master.rate -= 1
+    console.log("rate down");
+    $scope.allData.rating-=1
   }
 
   $scope.viewComments = () => {
@@ -53,11 +55,16 @@ app.controller("reddit", ($scope) => {
     $scope.master.addComment = true
   }
 
-  // $scope.addComment = () => {
-  //   var newComment = $scope.redditPost.commentToAdd
-  //   $scope.master.allData.comments.push(newComment)
-  // }
-  //date time posted
+  $scope.addComment = (str) => {
+    $scope.master.commentsExist = true
+    console.log("reddit comment", str);
+    var comment = {
+      comment: str
+    }
+    $scope.master.allData.push(comment)
+
+  }
+  // date time posted
   $scope.rightNow = new Date();
 
 
