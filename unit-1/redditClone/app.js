@@ -57,7 +57,7 @@ app.controller("reddit", ($scope) => {
       comments: [
         {
           author: 'Catie',
-          comment: "cool!"
+          comment: "Cool!"
         },
         {
           author: 'Ben',
@@ -77,40 +77,40 @@ app.controller("reddit", ($scope) => {
     }
   ]
 
-  $scope.rateUp = (index) => {
+  $scope.rateUp = (reddit) => {
     // console.log($scope.$watch)
     console.log("rate up");
-    $scope.allData[index].rating += 1
+    reddit.rating += 1
   }
 
-  $scope.rateDown = (index) => {
+  $scope.rateDown = (reddit) => {
     console.log("rate down");
-    $scope.allData[index].rating-=1
+    reddit.rating -= 1
   }
 
-  $scope.viewComments = (index) => {
-    $scope.allData[index].viewComments = true
+  $scope.viewComments = (reddit) => {
+    reddit.viewComments = true
   }
 
-  $scope.newComment = (index) => {
-    $scope.allData[index].addComment = true
+  $scope.newComment = (reddit) => {
+    reddit.addComment = true
   }
 
   $scope.newPost = () => {
     $scope.master.newPost = true
   }
 //need to add in the author of the post
-  $scope.addComment = (index, str, auth) => {
+  $scope.addComment = (reddit, str, auth) => {
     var comment = {
       author: auth,
       comment: str
     }
-    $scope.allData[index].comments.push(comment)
-    $scope.allData[index].viewComments = true
-    $scope.allData[index].addComment = false
+    reddit.comments.push(comment)
+    reddit.viewComments = true
+    reddit.addComment = false
   }
 
-  $scope.addPost = (index, postTitle, auth, post, imageURL) =>{
+  $scope.addPost = (postTitle, auth, post, imageURL) =>{
     var newPost = {
       title: postTitle,
       author: auth,

@@ -41,7 +41,8 @@
          Sort by {{ngSort}}<i class="fa fa-sort" aria-hidden="true"></i>
          <select
           name="sort"
-          ng-model="ngSort">
+          ng-model="ngSort"
+          ng-init="-rating">
            <option
             value="title"
             ng-model="sortTitle">Title
@@ -51,11 +52,10 @@
            ng-model="sortAuthor">Author
          </option>
          <option
-          value="rating"
+          value="-rating"
           ng-model="sortRating">Rating
         </option>
          </select>
-
       </detail>
     </span>
 
@@ -117,7 +117,7 @@
         <button
           type="submit"
           class="right"
-          ng-click="addPost($index, redditTitle, redditAuthor, redditBody, redditImage)"
+          ng-click="addPost(redditTitle, redditAuthor, redditBody, redditImage)"
         >
             Submit!
         </button>
@@ -127,7 +127,7 @@
     <div class="container">
       <!-- {{allData}} -->
 
-      <table ng-repeat="reddit in allData | filter: redditSearch | orderBy: ngSort: reverse track by $index"
+      <table ng-repeat="(index, reddit) in allData | filter: redditSearch | orderBy: ngSort: reverse"
         ng-model="redditPost"
       >
 
@@ -144,13 +144,13 @@
 
               <i class="fa fa-arrow-up"
                 aria-hidden="true"
-                ng-click="rateUp($index)"
+                ng-click="rateUp(reddit)"
                 ng-model="votesUp"
               >
             </i>
               <i class="fa fa-arrow-down"
                 aria-hidden="true"
-                ng-click="rateDown($index)"
+                ng-click="rateDown(reddit)"
                 ng-model="votesDown"
               >
               </i>
@@ -178,11 +178,11 @@
                   <i class="fa fa-calendar" aria-hidden="true"></i>
                   <time am-time-ago="time">{{reddit.time | amCalendar}}</time>
                 </small>
-                <small class="addOns" ng-click="viewComments($index)">
+                <small class="addOns" ng-click="viewComments(reddit)">
                 <i class="fa fa-comment"  aria-hidden="true"></i>
                  Comments ({{reddit.comments.length}})
               </small class="addOns">
-                <small ng-click="newComment($index)" >
+                <small ng-click="newComment(reddit)" >
                 <i class="fa fa-pencil" aria-hidden="true"></i>
                 Add Comment
               </small>
@@ -194,13 +194,12 @@
             <td class="spread">
               <div ng-show="reddit.viewComments">
               <p> Comments: </p>
-                <p ng-repeat="(author, comment) in reddit.comments track by $index"> {{comment.comment}} <br> <small class="author"> By: {{comment.author}}</small> </p>
+                <p ng-repeat="(author, comment) in reddit.comments"> {{comment.comment}} <br> <small class="author"> By: {{comment.author}}</small> </p>
             </div>
               <small class="comments"
                 ng-show="reddit.commentsExist"
                 ng-model="commentsExist"
               >
-
               {{reddit.comment}}
 
               </small>
@@ -229,7 +228,7 @@
 
                   <br><br>
                   <button type="submit"
-                    ng-click="addComment($index, commentToAdd, commentAuthor)">
+                    ng-click="addComment(reddit, commentToAdd, commentAuthor)">
                     Submit
                   </button>
                 </section>
