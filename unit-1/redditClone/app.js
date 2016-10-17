@@ -114,7 +114,7 @@ app.controller("reddit", ($scope) => {
     var newPost = {
       title: postTitle,
       author: auth,
-      desciption: post,
+      description: post,
       image: imageURL,
       rating: 0,
       comments: [],
