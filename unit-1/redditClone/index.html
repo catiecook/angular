@@ -25,7 +25,7 @@
     </h1>
     <br>
     <span class="spreadNav">
-      <detail ng-model="new" ng-click="addPost()">
+      <detail ng-model="new" ng-click="newPost()">
         <i class="fa fa-plus" aria-hidden="true"></i>Submit Post
       </detail>
       <input
@@ -46,8 +46,7 @@
 
     <br>
 
-    <div class="newPost" ng-show="newPost">
-
+    <div class="newPost" ng-show="master.newPost">
       <form ng-model="newPostForm">
         <span>
           <label for="newTitle">
@@ -103,7 +102,7 @@
         <button
           type="submit"
           class="right"
-          ng-click="submitNewPost()"
+          ng-click="addPost($index, redditTitle, redditAuthor, redditBody, redditImage)"
         >
             Submit!
         </button>
@@ -160,14 +159,14 @@
             <span class="spread">
                 <small class="addOns">
                   <i class="fa fa-calendar" aria-hidden="true"></i>
-                  <time am-time-ago="time">{{time}}</time>
+                  <time am-time-ago="time">{{reddit.time | amCalendar}}</time>
                 </small>
-                <small class="addOns">
-                <i class="fa fa-comment" ng-click="viewComments()" aria-hidden="true"></i>
-                Comments
+                <small class="addOns" ng-click="viewComments($index)">
+                <i class="fa fa-comment"  aria-hidden="true"></i>
+                 Comments ({{reddit.comments.length}})
               </small class="addOns">
-                <small>
-                <i ng-click="newComment()" class="fa fa-pencil" aria-hidden="true"></i>
+                <small ng-click="newComment($index)" >
+                <i class="fa fa-pencil" aria-hidden="true"></i>
                 Add Comment
               </small>
             </span>
@@ -176,18 +175,12 @@
 
           <tr class="comments">
             <td class="spread">
-              <div ng-show="master.viewComments">
-              <p> Comments </p>
-                <p ng-repeat="(author, comment) in reddit.comments track by $index"><em>Comment:</em> {{comment.comment}} <br> <small class="author"> By: {{comment.author}}</small> </p>
-                <!-- <small class="author"
-                  ng-show="master.noComments"
-                  ng-model="none"
-                >
-                No comments yet!
-              </small> -->
+              <div ng-show="reddit.viewComments">
+              <p> Comments: </p>
+                <p ng-repeat="(author, comment) in reddit.comments track by $index"> {{comment.comment}} <br> <small class="author"> By: {{comment.author}}</small> </p>
             </div>
               <small class="comments"
-                ng-show="master.commentsExist"
+                ng-show="reddit.commentsExist"
                 ng-model="commentsExist"
               >
 
@@ -198,13 +191,30 @@
           </tr>
             <tr class="comments">
               <td>
-                <section class="addComment" ng-show="master.addComment">
-                  <detail>Add a Comment</detail><br>
-                  <strong>Author: </strong><input type="text" ng-modell="commentAuthor">
-                  <strong>Comment:</strong> <input type="text" ng-model="commentToAdd">
-                  <br>
-                  <button type="submit" ng-click="addComment(commentToAdd)"> Submit </button>
-                  <p> Preview: {{commentToAdd}}</p>
+                <section class="addComment" ng-show="reddit.addComment">
+                  <h3>
+                    Add a Comment
+                  </h3>
+
+                  <label>
+                    Author:
+                  </label>
+                  <input type="text"
+                    ng-model="commentAuthor"
+                  >
+                  <br><br>
+                  <label>
+                    Comment:
+                  </label>
+                  <input type="text"
+                    ng-model="commentToAdd"
+                  >
+
+                  <br><br>
+                  <button type="submit"
+                    ng-click="addComment($index, commentToAdd, commentAuthor)">
+                    Submit
+                  </button>
                 </section>
               </td>
             </tr>

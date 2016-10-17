@@ -16,15 +16,25 @@ app.controller("reddit", ($scope) => {
       image: "https://source.unsplash.com/category/food/200x300",
       rating: 0,
       comments: [
-        {author: 'Catie',
-        comment: "cool!"},
-        {author:'Ben',
-        comment:"This is a great post!"},
-        {author:'Jason',
-        comment:"Nice Work!"},
-        {author:'Junk',
-        comment:"Whatever...."}
-      ]
+        {
+          author: 'Catie',
+          comment: "cool!"
+        },
+        {
+          author: 'Ben',
+          comment: "This is a great post!"
+        },
+        {
+          author: 'Jason',
+          comment: "Nice Work!"},
+        {
+          author: 'Junk',
+          comment: "Whatever...."}
+      ],
+      viewComments: false,
+      commentsExist: false,
+      addComment: false,
+      time: new Date(),
     },
     {
       title: "Another Post",
@@ -32,7 +42,11 @@ app.controller("reddit", ($scope) => {
       description: "Stares at human while pushing stuff off a table find empty spot in cupboard and sleep all day and catch mouse and gave it as a present. If it smells like fish eat as much as you wish sit on human, run in circles chirp at birds yet brown cats with pink ears, intently stare at the same spot. Rub face on owner swat at dog. Sit in box i cry and cry and cry unless you pet me, and then maybe i cry just for fun yet toy mouse squeak roll over but i like big cats and i can not lie. Chase the pig around the house chase mice, so meow to be let out. Sit in box scream at teh bath and scamper. Meowwww.",
       image: "https://source.unsplash.com/category/nature/200x300",
       rating: 0,
-      comments: []
+      comments: [],
+      viewComments: false,
+      commentsExist: false,
+      addComment: false,
+      time: new Date().getTime()
     },
     {
       title: "Also This",
@@ -41,50 +55,75 @@ app.controller("reddit", ($scope) => {
       image: "https://source.unsplash.com/category/objects/200x300",
       rating: 1,
       comments: [
-        {'Catie': "cool!"},
-        {'Ben':"This is a great post!"},
-        {'Jason':"Nice Work!"},
-        {'Junk':"Whatever...."}
-      ]
+        {
+          author: 'Catie',
+          comment: "cool!"
+        },
+        {
+          author: 'Ben',
+          comment: "This is a great post!"
+        },
+        {
+          author: 'Jason',
+          comment: "Nice Work!"},
+        {
+          author: 'Junk',
+          comment: "Whatever...."}
+      ],
+      viewComments: false,
+      commentsExist: false,
+      addComment: false,
+      time: new Date().getTime(),
     }
   ]
-//not working yet
 
   $scope.rateUp = (index) => {
     // console.log($scope.$watch)
     console.log("rate up");
     $scope.allData[index].rating += 1
   }
-//not working yet
+
   $scope.rateDown = (index) => {
     console.log("rate down");
     $scope.allData[index].rating-=1
   }
 
-  $scope.viewComments = () => {
-    console.log("in view comments function");
-    $scope.master.viewComments = true
+  $scope.viewComments = (index) => {
+    $scope.allData[index].viewComments = true
   }
 
-  $scope.newComment = () => {
-    console.log("in new comment function");
-    $scope.allData[$index].addComment = true
+  $scope.newComment = (index) => {
+    $scope.allData[index].addComment = true
+  }
+//need to add in the author of the post
+  $scope.addComment = (index, str, auth) => {
+    var comment = {
+      author: auth,
+      comment: str
+    }
+    $scope.allData[index].comments.push(comment)
   }
 
-  $scope.addComment = (str) => {
-    $scope.master.commentsExist = true
-    console.log("reddit comment", str);
-    $scope.allData[$index].push(str)
-  }
+$scope.newPost = () => {
+  console.log($scope.master.newPost);
+  $scope.master.newPost = true
+  console.log($scope.master.newPost);
+}
 
-  $scope.addPost = () =>{
-    $scope.master.newPost = true
-    console.log("in new post function");
-    console.log($scope.master.newPost);
+  $scope.addPost = (index, postTitle, auth, post, imageURL) =>{
+    var newPost = {
+      title: postTitle,
+      author: auth,
+      desciption: post,
+      image: imageURL
+    }
+    $scope.allData.push(newPost)
+    console.log(newPost)
+    $scope.master.newPost = false
   }
   // date time posted
 
-  $scope.time = new Date().getTime();
+
 
 
 });

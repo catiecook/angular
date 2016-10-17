@@ -132,9 +132,10 @@ input.new {
 }
 
 .newPost {
-  width: 90%;
+  background-color: white;
+  width: 91%;
   height: auto;
-  padding: 5%;
+  padding: 5% 2%;
 }
 
 .newPostBox {
