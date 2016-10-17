@@ -37,9 +37,24 @@
       <detail
         name="sort"
         ng-model="redditSort"
-        ng-click=""
       >
-        Sort by votes <i class="fa fa-sort" aria-hidden="true"></i>
+         Sort by {{ngSort}}<i class="fa fa-sort" aria-hidden="true"></i>
+         <select
+          name="sort"
+          ng-model="ngSort">
+           <option
+            value="title"
+            ng-model="sortTitle">Title
+          </option>
+          <option
+           value="author"
+           ng-model="sortAuthor">Author
+         </option>
+         <option
+          value="rating"
+          ng-model="sortRating">Rating
+        </option>
+         </select>
 
       </detail>
     </span>
@@ -112,7 +127,9 @@
     <div class="container">
       <!-- {{allData}} -->
 
-      <table ng-repeat="reddit in allData | filter: redditSearch | orderBy: redditSort  track by $index " ng-model="redditPost">
+      <table ng-repeat="reddit in allData | filter: redditSearch | orderBy: ngSort: reverse track by $index"
+        ng-model="redditPost"
+      >
 
         <tr>
           <td class='floatedimg'>
@@ -130,7 +147,7 @@
                 ng-click="rateUp($index)"
                 ng-model="votesUp"
               >
-              </i>
+            </i>
               <i class="fa fa-arrow-down"
                 aria-hidden="true"
                 ng-click="rateDown($index)"

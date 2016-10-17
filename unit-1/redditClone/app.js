@@ -53,7 +53,7 @@ app.controller("reddit", ($scope) => {
       author: "Liz Horton",
       description: "Damn thallDataat dog brown cats with pink ears but sleep on keyboard, for thug cat but lie on your belly and purr when you are asleep. Fall over dead (not really but gets sypathy). Put butt in owner's face favor packaging over toy lick arm hair. Hide from vacuum cleaner lick plastic bags but scratch leg; meow for can opener to feed me, but rub face on everything, for make muffins, but vommit food and eat it again, sleep on dog bed, force dog to sleep on floor.",
       image: "https://source.unsplash.com/category/objects/200x300",
-      rating: 1,
+      rating: 0,
       comments: [
         {
           author: 'Catie',
@@ -95,6 +95,10 @@ app.controller("reddit", ($scope) => {
   $scope.newComment = (index) => {
     $scope.allData[index].addComment = true
   }
+
+  $scope.newPost = () => {
+    $scope.master.newPost = true
+  }
 //need to add in the author of the post
   $scope.addComment = (index, str, auth) => {
     var comment = {
@@ -102,13 +106,9 @@ app.controller("reddit", ($scope) => {
       comment: str
     }
     $scope.allData[index].comments.push(comment)
+    $scope.allData[index].viewComments = true
+    $scope.allData[index].addComment = false
   }
-
-$scope.newPost = () => {
-  console.log($scope.master.newPost);
-  $scope.master.newPost = true
-  console.log($scope.master.newPost);
-}
 
   $scope.addPost = (index, postTitle, auth, post, imageURL) =>{
     var newPost = {
@@ -121,9 +121,5 @@ $scope.newPost = () => {
     console.log(newPost)
     $scope.master.newPost = false
   }
-  // date time posted
-
-
-
 
 });
