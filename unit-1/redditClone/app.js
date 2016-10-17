@@ -115,7 +115,13 @@ app.controller("reddit", ($scope) => {
       title: postTitle,
       author: auth,
       desciption: post,
-      image: imageURL
+      image: imageURL,
+      rating: 0,
+      comments: [],
+      viewComments: false,
+      commentsExist: false,
+      addComment: false,
+      time: new Date()
     }
     $scope.allData.push(newPost)
     console.log(newPost)
