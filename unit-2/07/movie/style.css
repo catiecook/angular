@@ -102,3 +102,9 @@ table {
   clear: none;
   overflow: scroll;
 }
+
+.viewBtn {
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
