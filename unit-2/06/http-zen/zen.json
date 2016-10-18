@@ -1,0 +1,14 @@
+{
+  "data":"Keep it logically awesome.",
+  "status":200,
+  "config": {
+    "method":"GET",
+    "transformRequest":[null],
+    "transformResponse":[null],
+    "url":"https://api.github.com/zen",
+    "headers":{
+      "Accept":"application/json, text/plain, */*"
+    }
+  },
+  "statusText":"OK"
+}

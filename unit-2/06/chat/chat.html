@@ -1,0 +1,28 @@
+<h1>Chat Board</h1>
+<h4>New Message</h4>
+<form name="newChat">
+    <div>
+      <label for="char-username">
+        Username:
+      </label>
+      <input id="chat-username"
+        ng-model="username"
+        placeholder="username">
+    </div>
+    <div>
+      <label for="chat-message">
+        Password:
+      </label>
+      <input
+        type="text"
+        id="chat-message"
+        ng-model="message"
+        placeholder="message"
+      >
+    </div>
+    <div>
+      <button type="submit" name="submit" ng-click="create()">
+        Submit
+      </button>
+    </div>
+</form>
