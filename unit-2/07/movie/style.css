@@ -1,0 +1,104 @@
+html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'ABeeZee', sans-serif;
+}
+
+.container {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.containerMovie {
+  width: 40%;
+  height: auto;
+  margin: 0 auto;
+  /*display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;*/
+}
+
+h1 {
+  font-family: 'Bungee Shade';
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Bungee Inline';
+  text-align: center;
+}
+
+h4 {
+  font-family: 'Bungee Inline';
+  text-align: center;
+}
+
+form {
+  width: 100%;
+}
+
+input {
+  width: 90%;
+  padding: 5%;
+  margin: 3% 0;
+}
+
+button {
+  margin-top: 5%;
+  padding: 2%;
+  background-color: lightblue;
+}
+
+td {
+  margin-right: 1%;
+}
+
+table {
+  width: 90%;
+  margin: 2% auto;
+  padding: 2%;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-content: center;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.year {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.floatedimg {
+  width: 25%;
+  position: relative;
+  float: left;
+  clear: none;
+}
+
+.floated {
+  width: 65%;
+  position: relative;
+  float: right;
+  clear: none;
+  overflow: scroll;
+}

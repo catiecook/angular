@@ -1,0 +1,65 @@
+<h1>Angular OMDDb</h1>
+<h2>API Search</h2>
+<hr>
+<h4>Search movies by title</h4>
+<form
+  name="search"
+  ng-model="searhMovies"
+  ng-submit="findMovies()"
+  >
+    <div>
+      <input
+        type="text"
+        ng-model="movieTitle"
+        placeholder="Search a Movie Title"
+        required
+      >
+      <button
+        type="submit"
+        name="submit">
+          Search <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
+    <br>
+</form>
+<hr>
+
+<div ng-show="searchStarted">
+  <h4>
+    Results for "{{movieTitle}}"
+  </h4>
+  <hr>
+  <br>
+  <table
+    name="movieResults"
+    class="centered"
+    ng-repeat="movie in moviesFound"
+  >
+    <tr>
+      <td>
+        <img
+          src="{{movie.Poster}}"
+          alt="movie poster"
+        >
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <detail class="title">
+          {{movie.Title}}
+        </detail>
+        <small class='year'>
+          {{movie.Year}}
+        </small>
+      </td>
+    </tr>
+      <tr>
+        <td>
+          <a href='/movie/{{movie.Title}}' ng-click="singleMovie(movie.Title)">
+            View <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </a>
+          <hr>
+        </td>
+      </tr>
+  </table>
+</div>
