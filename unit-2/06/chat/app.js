@@ -2,36 +2,42 @@ var chatApp = angular.module('chatApp', ['ngRoute'])
 
   chatApp.config(function($routeProvider, $locationProvider) {
     $routeProvider
+    .when('/message', {
+      templateUrl: 'message.html',
+      controller: 'MessageController'
+    })
       .when('/', {
         templateUrl: 'chat.html',
         controller: 'ChatController'
       })
-      .when('/message', {
-        templateUrl: '/message.html',
-        controller: 'MessageController'
-      })
     $locationProvider.html5Mode(true);
   })
 // controllers
-  chatApp.controller('ChatController', function($scope, $http, $lcoation) {
+  chatApp.controller('ChatController', function($scope, $http, $location) {
+    console.log("in CHAT CONTROLLER");
     $scope.create = function() {
-      const newMsg = {
+      console.log($scope.username, $scope.message);
+      const newMsg = { message: {
         name: $scope.username,
         content: $scope.message
-      }
+      }}
 
-      $http.post('https://api.github.com/zen/message')
+      $http.post('https://messagehttpservice.herokuapp.com/messages', newMsg)
         .then(function(data){
+          console.log("post sucessful", data);
           $location.path('/message')
-        });
+        }).catch(function(err){
+          console.error("whoops, couldn't post to messages ", err)
+        })
       }
   });
 
   chatApp.controller('MessageController', function($scope, $http) {
-    $http.get('https://api.github.com/zen/message')
+
+    console.log("in message controller");
+    $http.get('https://messagehttpservice.herokuapp.com/messages')
     .then(function(data) {
-      $scope.message = data;
     }).catch(function(err) {
-      console.error("Nope", err);
+      console.error("Nope, can't get messages ", err);
     })
   })

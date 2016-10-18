@@ -1,7 +1,7 @@
 <h1>Chat Board</h1>
 <h4>New Message</h4>
-<form name="newChat">
-    <div>
+<form name="newChat" ng-submit="create()">
+    <div class="form">
       <label for="char-username">
         Username:
       </label>
@@ -9,7 +9,7 @@
         ng-model="username"
         placeholder="username">
     </div>
-    <div>
+    <div class="form">
       <label for="chat-message">
         Password:
       </label>
@@ -21,7 +21,7 @@
       >
     </div>
     <div>
-      <button type="submit" name="submit" ng-click="create()">
+      <button type="submit" name="submit">
         Submit
       </button>
     </div>

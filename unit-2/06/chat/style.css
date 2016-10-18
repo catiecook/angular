@@ -1,0 +1,55 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'ABeeZee', sans-serif;
+}
+
+.container {
+  width: 100%;
+  margin-bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-family: 'Kaushan Script';
+}
+
+form {
+  width: 80%;
+}
+
+input {
+  width: 200%;
+  padding: 5%;
+  margin: 3% 0;
+}
+
+button {
+  margin-top: 5%;
+  padding: 10%;
+  background-color: lightblue;
+}
+
+
+.form {
+  margin: 20% auto;
+}
+
+td {
+  margin-left: 5%;
+}
+
+table {
+  width: 80%;
+}
+
+.bad {
+  box-shadow: inset 1px -2.5px 1px -1px indianred;
+}
+
+.good {
+  box-shadow: inset 1px -2.5px 1px -1px lightgreen;
+}
