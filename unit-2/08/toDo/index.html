@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="toDoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>To Do</title>
+
+    <!-- sylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=ABeeZee|Kaushan+Script" rel="stylesheet">
+    <!-- angularjs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+
+  </head>
+  <body>
+    <div
+      class="container"
+      ng-controller="toDoController"
+    >
+      <h1>
+        To Do
+      </h1>
+
+        <input
+          ng-model="itemToAdd"
+          name="localToDo"
+          ng-class="{'badInput': 'itemToAdd.$invalid', 'goodInput': 'itemToAdd.$valid'}"
+          placeholder="Add to do here...."
+          required
+        />
+        <br>
+        <br>
+        <button
+          class="good"
+          ng-value="addToDo"
+          ng-click="add(itemToAdd)"
+        >
+          Add
+        </button>
+
+      <hr>
+      <div
+        class="toDoList"
+        ng-show="view.itemsExist"
+      >
+      <h2> Today's List </h2>
+      <table>
+        <span class='spread'>
+          <tr ng-repeat="todo in view.toDoItems">
+            <td>
+              {{todo.itemDesc}}
+            </td>
+              <td ng-show="todo.update">
+                <input
+                  name="new"
+                  ng-model="newItem"
+                  ng-value="todo.itemDesc"
+                >
+              </td>
+              <td ng-show="todo.update">
+                <button
+                  class="edit"
+                  ng-click="update(todo, newItem)"
+                >
+                  Update
+                </button>
+              </td>
+            </div>
+
+            <td>
+              <button
+                class="edit"
+                ng-click="edit(todo)"
+              >
+                Edit
+              </button>
+            </td>
+            <td>
+              <button
+                class="bad"
+                ng-click="delete(todo)">
+                X
+              </button>
+            </td>
+          </tr>
+        </span>
+      </table>
+    </div>
+  </div>
+
+    <script src="app.js"></script>
+    <script src="controller.js"></script>
+  </body>
+</html>

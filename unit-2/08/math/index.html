@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="mathApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Mini Calculator</title>
+    <!-- sylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=ABeeZee|Kaushan+Script" rel="stylesheet">
+    <!-- angularjs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+
+  </head>
+  <body>
+
+    <h1>NG - Calculator</h1>
+    <hr>
+    <div class="container" ng-controller="mathController">
+      <form ng-submit="calculate(operation, view.first, view.second)">
+          <div class="form">
+            <label for="selectOperation">
+              Operation:
+            </label>
+            <br>
+            <select
+              id="selectOperation"
+              ng-model="operation"
+              ng-init="view.add"
+            >
+              <option
+                value="add"
+                ng-model="add"
+              >
+                Add
+              </option>
+              <option
+                value="subtract"
+                ng-model="view.sub"
+              >
+                  Subtract
+              </option>
+              <option
+                value="multiply"
+                ng-model="view.mult"
+              >
+                  Multiply
+              </option>
+              <option
+                value="divide"
+                ng-model="view.div"
+              >
+                  Divide
+              </option>
+
+              <option
+                value="power"
+                ng-model="view.pow"
+              >
+                  Power
+              </option>
+            </select>
+          </div>
+
+          <div class="form">
+            <label for="firstNum">
+              First:
+            </label>
+            <br>
+            <input
+              type="number"
+              id="firstNum"
+              ng-model="view.first"
+            >
+            <div class="form">
+              <label for="secondNum">
+                Second:
+              </label>
+              <br>
+              <input
+                type="number"
+                id="secondNum"
+                ng-model="view.second"
+                placeholder="second"
+              >
+          </div>
+          <div>
+            <button type="submit" name="submit">
+              Calculate
+            </button>
+          </div>
+      </form>
+    </dvi>
+
+    <div class="result">
+      <h3>= {{view.result}}</h3>
+    </div>
+
+
+    <button type="reset" name="reset" ng-click="reset()">
+      Clear
+    </button>
+
+  <script src="app.js"></script>
+  <script src="controller.js"></script>
+  </body>
+</html>
