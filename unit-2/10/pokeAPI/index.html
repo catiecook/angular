@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pokeApp">
+  <head>
+    <meta charset="UTF-8">
+    <title>Poke | API</title>
+  </head>
+
+  <body ng-controller="pokeController">
+    <gs-poke-directive poke-attribute="poke"
+      ng-repeat="poke in view.pokeStuff"
+    >
+    </gs-poke-directive>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

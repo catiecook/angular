@@ -1,0 +1,52 @@
+
+<div ng-controller="colorController">
+  <div layout-align="center-center" layout="column" layout-padding>
+  <div layout="row">
+    <div flex>
+      <label for="name">
+        Whats your name?
+      </label>
+      <input type='text' ng-model="view.name" ng-change="type()">
+      <br>
+    </div>
+  </div>
+
+  <div layout="row">
+    <h1 ng-show="nameExists">
+      Hey, {{view.name}}!
+    </h1>
+  </div>
+
+      <div layout="row">
+        <div flex>
+          <label for="name">
+            What color do you want your name to be?
+          </label>
+          <md-select
+            ng-model="colorPick"
+            ng-change="color(color.color)"
+          >
+            <md-option value="{{color.color}}"
+              ng-repeat="color in colors"
+            >
+              {{color.color}}
+            </md-option>
+          </md-select>
+        </div>
+      </div>
+
+      <div layout="row">
+        <br>
+        <div flex ng-show="colorPicked">
+
+          <my-change-color>
+            <h1>
+              {{view.name}}
+            </h1>
+          </my-change-color>
+
+        </div>
+      </div>
+
+  </div>
+  </div>
