@@ -1,6 +1,7 @@
 angular.module('toDoApp', [])
 
 .service("toDoService", function(){
+
   this.addToDo = function(item) {
     console.log("service.....adding ", item);
     var toAdd = {

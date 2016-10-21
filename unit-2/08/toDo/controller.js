@@ -6,9 +6,9 @@ angular.module('toDoApp')
     $scope.view.itemsExist = false
 
 
-    $scope.add = function(item){
-      console.log($scope.view.editItem);
+    $scope.add = function(item) {
       $scope.view.itemsExist = true
+
       $scope.view.toDoItems.push(toDoService.addToDo(item))
       console.log("service app called in controller", toDoService.addToDo(item));
 

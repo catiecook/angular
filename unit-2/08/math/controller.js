@@ -1,7 +1,9 @@
 angular.module('mathApp')
+
   .controller("mathController", function($scope, mathServices){
+
     $scope.view= {}
-    
+
     $scope.calculate = function(sign, a, b){
       switch(sign) {
         case 'addition':
